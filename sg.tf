@@ -1,4 +1,4 @@
-provider "aws_security_group" "sg-1" {
+resource "aws_security_group" "sg-1" {
 name = "my-sg-2"
 description = "created by terraform"
 
