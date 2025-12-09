@@ -1,11 +1,12 @@
 resource "aws_instance" "ec2-1" {
 tags = {
-Name = "minikube"
+Name = var.name
 }
-ami = "ami-068c0051b15cdb816"
-instance_type = "m7i-flex.large"
-vpc_security_group_ids = [aws_security_group.sg-1.id]
+ami = var.ami_id
+instance_type = var.itype
+key_name = var.key 
+vpc_security_group_ids = var.sg
 root_block_device {
-volume_size = 30
+volume_size = var.size
 }
 }
