@@ -15,7 +15,7 @@ default = "m7i-flex.large"
 
 variable "sg" {
 type = string
-default = "aws_security_group.sg-1.id"
+default = "sg-0f346a38b46747284"
 }
 
 variable "size" {
