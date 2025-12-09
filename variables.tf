@@ -1,29 +1,29 @@
-variables "name" {
+variable "name" {
 type = string
 default = "minikube"
 }
 
-variables "ami_id" {
+variable "ami_id" {
 type = string
 default = "ami-068c0051b15cdb816"
 }
 
-variables "itype" {
+variable "itype" {
 type = string
 default = "m7i-flex.large"
 }
 
-variables "sg"{
+variable "sg" {
 type = string
 default = "aws_security_group.sg-1.id"
 }
 
-variables "size" {
+variable "size" {
 type = number
 default = 25
 }
 
-variables "key" {
+variable "key" {
 type = string
 default = "my-key"
 }
