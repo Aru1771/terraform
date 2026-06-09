@@ -18,19 +18,19 @@ module "vpc" {
 }
 
 module "subnet_1" {
-    source = "./modules/subnet/subnets.tf"
-    vpc_id = module.vpc.vpc_1.id
+    source = "./modules/subnet"
+    vpc_id = module.vpc.vpc_id
     cidr_block = "10.0.1.0/24"
     availability_zone = "us-east-1a"
     subnet_name = "public-subnet-1"
 }
 
 module "subnet_2" {
-    source = "./modules/subnet/subnets_2.tf"
-    vpc_id = module.vpc.vpc_1.id
-    cidr_block_2 = "10.0.2.0/24"
-    availability_zone_2 = "us-east-1b"
-    subnet_name_2 = "public-subnet-2"
+    source = "./modules/subnet"
+    vpc_id = module.vpc.vpc_id
+    cidr_block = "10.0.2.0/24"
+    availability_zone  = "us-east-1b"
+    subnet_name  = "Private-subnet-2"
 }
 
 
