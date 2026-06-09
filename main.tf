@@ -5,8 +5,8 @@ module "ec2_instance" {
     root_volume_size = 10
     instance_count =1
     instance_name = "minikube"
-    subnet_id = module.subnet.subnet_1.id
-    security_group_id = module.sg.sg_1.id
+    subnet_id = module.subnet.subnet_id
+    security_group_id = module.sg.sg_id
 
 }
 
