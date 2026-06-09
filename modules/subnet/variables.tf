@@ -27,3 +27,10 @@ variable "subnet_name_2" {
     description = "the name of the second subnet"
     type = string
 }
+
+variable "vpc_id" {
+    description = "the ID of the VPC to which the subnet belongs"
+    type = string
+}
+
+
