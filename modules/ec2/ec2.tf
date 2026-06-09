@@ -8,9 +8,9 @@ resource "aws_instance" "k8s-1" {
         volume_size = var.root_volume_size
     }
     
-    subnet_id = aws_subnet.subnet-1.id
+    subnet_id = aws_subnet.subnet_1.id
 
-    vpc_security_group_ids = [aws_security_group.sg-1.id]
+    vpc_security_group_ids = [aws_security_group.sg_1.id]
     count = var.instance_count
 }
 
