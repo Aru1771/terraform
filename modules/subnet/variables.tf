@@ -18,3 +18,8 @@ variable "vpc_id" {
 }
 
 
+variable "map_public_ip_on_launch" {
+    description = "mapping public ip to ec2 automatically"
+    type = bool
+  
+}
