@@ -13,3 +13,4 @@ output "instance_private_ip" {
     value = aws_instance.k8s_1[*].private_ip
 }
 
+#[*]==This is called the splat operator.
