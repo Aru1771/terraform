@@ -10,12 +10,9 @@ variable "route_table_name" {
     type = string
 }
 
-variable "route_table_cidr_block" {
-    description = "The CIDR block for the route table."
-    type = string
-}
-
-variable "route_table_gateway_id" {
-    description = "The ID of the gateway for the route table."
-    type = string
+variable "routes" {
+  type = list(object({
+    cidr_block = string
+    gateway_id = string
+  }))
 }

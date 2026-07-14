@@ -64,8 +64,12 @@ module "routetable" {
   source = "./modules/routetable"
   vpc_id = module.vpc.vpc_id
   route_table_name = "public_route_table"
-  route_table_cidr_block = "0.0.0.0/0"
-  route_table_gateway_id = module.igw.igw_id
+  routes = [
+    {
+      cidr_block = "0.0.0.0/0"
+      gateway_id = module.igw.igw_id
+    }
+  ]
 }
 
 
