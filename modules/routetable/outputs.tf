@@ -4,7 +4,7 @@ output "route_table_id" {
 
 }
 
-output "name" {
+output "route_table_name" {
   description = "The name of the route table."
   value       = aws_route_table.prod_route_table.tags["Name"]
 
