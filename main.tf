@@ -1,20 +1,14 @@
-module "ec2_instance" {
-    source = "./modules/ec2"
-    ami_id = "ami-00e801948462f718a"
-    instance_type = "t2.micro"
-    root_volume_size = 10
-    instance_count =1
-    instance_name = "minikube"
-    subnet_id = module.subnet_1.subnet_id
-    security_group_id = module.sg.security_group_id
-
-}
-
 module "vpc" {
     source = "./modules/vpc"
     cidr_block = "10.0.0.0/16"
     vpc_name = "my_vpc"
     enable_dns_hostnames = true
+}
+
+module "igw" {
+  source = "./modules/igw"
+  vpc_id = module.vpc.vpc_id
+  igw_name = "my_igw"
 }
 
 module "subnet_1" {
@@ -35,6 +29,17 @@ module "subnet_2" {
     subnet_name  = "private_subnet_2"
 }
 
+module "routetable" {
+  source = "./modules/routetable"
+  vpc_id = module.vpc.vpc_id
+  route_table_name = "public_route_table"
+  routes = [
+    {
+      cidr_block = "0.0.0.0/0"
+      gateway_id = module.igw.igw_id
+    }
+  ]
+}
 
 
 module "sg" {
@@ -60,21 +65,29 @@ module "sg" {
   ]
 }
 
-module "routetable" {
-  source = "./modules/routetable"
-  vpc_id = module.vpc.vpc_id
-  route_table_name = "public_route_table"
-  routes = [
-    {
-      cidr_block = "0.0.0.0/0"
-      gateway_id = module.igw.igw_id
-    }
-  ]
+
+module "ec2_instance" {
+    source = "./modules/ec2"
+    ami_id = "ami-00e801948462f718a"
+    instance_type = "t2.micro"
+    root_volume_size = 10
+    instance_count =1
+    instance_name = "minikube"
+    subnet_id = module.subnet_1.subnet_id
+    security_group_id = module.sg.security_group_id
+
 }
 
 
-module "igw" {
-  source = "./modules/igw"
-  vpc_id = module.vpc.vpc_id
-  igw_name = "my_igw"
-}
+
+
+
+
+
+
+
+
+
+
+
+
