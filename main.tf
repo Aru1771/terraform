@@ -29,6 +29,12 @@ module "subnet_2" {
     subnet_name  = "private_subnet_2"
 }
 
+module "routetableassociation" {
+  source = "./modules/routetableassociation"
+  subnet_id = module.subnet_1.subnet_id
+  route_table_id = module.routetable.route_table_id
+}
+
 module "routetable" {
   source = "./modules/routetable"
   vpc_id = module.vpc.vpc_id
@@ -72,11 +78,14 @@ module "ec2_instance" {
     instance_type = "t2.micro"
     root_volume_size = 10
     instance_count =1
-    instance_name = "minikube"
+    instance_name = "test_instance"
     subnet_id = module.subnet_1.subnet_id
     security_group_id = module.sg.security_group_id
 
 }
+
+
+
 
 
 
