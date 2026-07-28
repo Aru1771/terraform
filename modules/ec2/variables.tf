@@ -34,3 +34,7 @@ variable "subnet_id" {
     description = "The ID of the subnet to launch the EC2 instance in"
     type = string
 }
+variable "associate_public_ip" {
+    description = "Whether to associate a public IP address with the instance"
+    type = bool
+}

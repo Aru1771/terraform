@@ -13,3 +13,5 @@ output "vpc_enable_dns_hostnames" {
     value = aws_vpc.vpc_1.enable_dns_hostnames
 }
 
+
+

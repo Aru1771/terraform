@@ -3,6 +3,7 @@ module "vpc" {
     cidr_block = "10.0.0.0/16"
     vpc_name = "my_vpc"
     enable_dns_hostnames = true
+    instance_tenancy = "default"
 }
 
 module "igw" {
@@ -81,6 +82,7 @@ module "ec2_instance" {
     instance_name = "test_instance"
     subnet_id = module.subnet_1.subnet_id
     security_group_id = module.sg.security_group_id
+    associate_public_ip = true
 
 }
 

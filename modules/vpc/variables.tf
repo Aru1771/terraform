@@ -13,3 +13,8 @@ variable "enable_dns_hostnames" {
     description = "whether to enable DNS hostnames in the VPC"
     type = bool
 }
+
+variable "instance_tenancy" {
+    description = "the instance tenancy for the VPC"
+    type = string
+}
