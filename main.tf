@@ -82,9 +82,28 @@ module "ec2_instance" {
     instance_name = "test_instance"
     subnet_id = module.subnet_1.subnet_id
     security_group_id = module.sg.security_group_id
+    key_name = "prod.pem"
     associate_public_ip = true
 
 }
+
+module "ebs_volume" {
+    source = "./modules/ebs"
+    availability_zone = "us-east-1a"
+    size = 8
+    type = "gp2"
+    snapshot_id = ""
+    iops = 3000
+    throughput = 125
+    encrypted = false
+    volume_name = "my_ebs_volume"
+    volume_count = 1
+  
+}
+
+
+
+
 
 
 

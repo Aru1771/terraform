@@ -9,6 +9,7 @@ resource "aws_instance" "k8s_1" {
     }
     vpc_security_group_ids = [var.security_group_id]
     subnet_id = var.subnet_id
+    key_name = var.key_name
     count = var.instance_count
     associate_public_ip_address = var.associate_public_ip
 }

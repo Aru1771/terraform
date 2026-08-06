@@ -38,3 +38,8 @@ variable "associate_public_ip" {
     description = "Whether to associate a public IP address with the instance"
     type = bool
 }
+
+variable "key_name" {
+    description = "The name of the key pair to use for the instance"
+    type = string
+}
