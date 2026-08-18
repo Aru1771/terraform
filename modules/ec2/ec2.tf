@@ -1,4 +1,4 @@
-resource "aws_instance" "k8s_1" {
+resource "aws_instance" "terraform_ec2" {
     ami = var.ami_id
     instance_type = var.instance_type
     tags = {

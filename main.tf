@@ -1,42 +1,34 @@
-module "vpc" {
+#module "vpc" {
     source = "./modules/vpc"
     cidr_block = "10.0.0.0/16"
     vpc_name = "my_vpc"
     enable_dns_hostnames = true
     instance_tenancy = "default"
-}
+#}
 
-module "igw" {
+#module "igw" {
   source = "./modules/igw"
   vpc_id = module.vpc.vpc_id
   igw_name = "my_igw"
-}
+#}
 
-module "subnet_1" {
-    source = "./modules/subnet"
-    vpc_id = module.vpc.vpc_id
-    cidr_block = "10.0.1.0/24"
-    availability_zone = "us-east-1a"
-    map_public_ip_on_launch = true
-    subnet_name = "public_subnet_1"
-}
 
-module "subnet_2" {
+#module "subnet_2" {
     source = "./modules/subnet"
     vpc_id = module.vpc.vpc_id 
     cidr_block = "10.0.2.0/24"
     availability_zone  = "us-east-1b"
     map_public_ip_on_launch = false
     subnet_name  = "private_subnet_2"
-}
+#}
 
-module "routetableassociation" {
+#module "routetableassociation" {
   source = "./modules/routetableassociation"
   subnet_id = module.subnet_1.subnet_id
   route_table_id = module.routetable.route_table_id
-}
+#}
 
-module "routetable" {
+#module "routetable" {
   source = "./modules/routetable"
   vpc_id = module.vpc.vpc_id
   route_table_name = "public_route_table"
@@ -46,10 +38,10 @@ module "routetable" {
       gateway_id = module.igw.igw_id
     }
   ]
-}
+#}
 
 
-module "sg" {
+#module "sg" {
   source = "./modules/sg"
 
   name        = "k8s_sg-1"
@@ -70,10 +62,10 @@ module "sg" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
-}
+#}
 
 
-module "ec2_instance" {
+#module "ec2_instance" {
     source = "./modules/ec2"
     ami_id = "ami-00e801948462f718a"
     instance_type = "t2.micro"
@@ -82,10 +74,10 @@ module "ec2_instance" {
     instance_name = "test_instance"
     subnet_id = module.subnet_1.subnet_id
     security_group_id = module.sg.security_group_id
-    key_name = "prod.pem"
+    key_name = "prod"
     associate_public_ip = true
 
-}
+#}
 
 module "ebs_volume" {
     source = "./modules/ebs"

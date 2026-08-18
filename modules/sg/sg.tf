@@ -1,4 +1,4 @@
-resource "aws_security_group" "sg_1" {
+resource "aws_security_group" "terraform_sg" {
 
     name = var.name
     description = var.description

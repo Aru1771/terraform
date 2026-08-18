@@ -1,4 +1,4 @@
-resource "aws_ebs_volume" "k8s_ebs" {
+resource "aws_ebs_volume" "terraform_ebs_volume" {
     availability_zone = var.availability_zone
     size              = var.size
     type              = var.type

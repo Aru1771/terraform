@@ -43,3 +43,4 @@ variable "egress_rules" {
     cidr_blocks = ["0.0.0.0/0"]
   }]
 }
+
